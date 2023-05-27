@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ndsh"
+version = "0.1.0"
+description = "Remote shell over NDN"
+authors = ["Xinyu Ma <ma.xinyu.26a@kyoto-u.jp>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-ndn = {version="^0.3-3", extras=["pyca"]}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

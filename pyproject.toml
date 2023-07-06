@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 python-ndn = {version="^0.3-3", extras=["pyca"]}
+shellous = "^0.25.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"

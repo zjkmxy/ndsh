@@ -761,6 +761,17 @@ dev = ["build (>=0.8.0)", "flake8 (>=4.0.1)", "pytest (>=7.1.2)", "pytest-cov (>
 pyca = ["cryptography (>=39.0.1)"]
 
 [[package]]
+name = "shellous"
+version = "0.25.0"
+description = "Async Processes and Pipelines"
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "shellous-0.25.0-py3-none-any.whl", hash = "sha256:6ce31a252bf1a1f251923466669d97e6d3fd95824806b1c8ed9f056d69c93486"},
+    {file = "shellous-0.25.0.tar.gz", hash = "sha256:8f3adc75b9ea44db1da28446a52dde29d7a8e05d17f57c6ffe05592c1959f31b"},
+]
+
+[[package]]
 name = "yarl"
 version = "1.9.2"
 description = "Yet another URL library"
@@ -850,4 +861,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "076056633a16227fdfce1c25cf3ea75e4a50c5622e0e5cf98737405ab7c5f76d"
+content-hash = "3a765c7622aa453b767098f854e0a4c48f1ee04d7a8b99416385ba612a25ed29"

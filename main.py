@@ -42,4 +42,3 @@ async def main(my_args: list[str] = None):
 if __name__ == '__main__':
     aio.run(main())
 
-# sudo poetry run python main.py root $(pwd) /bin/bash --norc

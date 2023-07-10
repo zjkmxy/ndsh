@@ -106,7 +106,7 @@ class Process:
         return appv2.ValidResult.PASS
 
     async def feed_input(self) -> bytes:
-        while not self.no_more_input:
+        while not self.no_more_input and not self.done:
             name = SystemConfig.app_prefix + [
                 enc.Component.from_str(self.flow_name),
                 enc.Component.from_str('32=IN'),
@@ -114,12 +114,12 @@ class Process:
             ]
             try:
                 _, cipher_text, context = await self.app.express(
-                    name, self.input_validator, lifetime=60000)
+                    name, self.input_validator, lifetime=100)
             except types.InterestTimeout:
                 logging.debug(f'[{self.flow_name}] input {self.in_seq} timeout.')
                 continue  # timeout is usual
             except (types.InterestNack, types.ValidationFailure) as e:
-                logging.warning(f'[{self.flow_name}] Fail to fetch input {self.in_seq}', e)
+                logging.warning(f'[{self.flow_name}] Fail to fetch input {self.in_seq}: {e}')
                 continue
             except types.InterestCanceled:
                 logging.fatal('Local NFD node is down. This PoC version will not handle forwarder failure.')
@@ -172,6 +172,7 @@ class Process:
         data = json.dumps({
             'last_in_seq': self.in_seq,
             'last_out_seq': self.out_seq,
+            'exit_code': code,
         })
         data_pkt = self.app.make_data(name, data.encode(), self.signer,
                                       freshness_period=10000,

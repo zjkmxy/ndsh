@@ -46,7 +46,7 @@ class Executor:
                 stdin=self.pslave, stdout=self.pslave, stderr=subprocess.STDOUT,
             )
 
-            self.stdio = os.fdopen(self.pmaster, 'w+b')
+            self.stdio = os.fdopen(self.pmaster, 'wb+', buffering=0)
             loop = aio.get_running_loop()
             self.std_reader = aio.StreamReader()
             protocol = aio.StreamReaderProtocol(self.std_reader)
